@@ -4,7 +4,7 @@ import { cores } from '../../styles'
 import { Props } from '.'
 
 export const TagContainer = styled.div<Props>`
-  background-color: ${cores.verda};
+  background-color: ${cores.verde};
   color: ${cores.branca};
   font-size: ${(props) => (props.size === 'big' ? '16px' : '10px')};
   font-weight: bold;
