@@ -15,9 +15,9 @@ type TabButtonProps = {
 
 export const Row = styled.div<RowProps>`
   display: flex;
-  align-items: flex-end;
   column-gap: 24px;
   margin-top: ${(props) => props.marginTop || '0'};
+  align-items: flex-end;
 `
 
 export const InputGroup = styled.div<InputGroupProps>`
@@ -38,8 +38,13 @@ export const InputGroup = styled.div<InputGroupProps>`
     height: 32px;
     padding: 0 8px;
     width: 100%;
+
+    &.error {
+      border: 1px solid red;
+    }
   }
 `
+
 export const TabButton = styled.button<TabButtonProps>`
   border-radius: 8px;
   font-size: 14px;

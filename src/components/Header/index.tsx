@@ -9,11 +9,11 @@ import logo from '../../assets/images/logo.svg'
 import cartIcon from '../../assets/images/carrinho.svg'
 
 import { open } from '../../store/reducers/cart'
-import { RooteReducer } from '../../store'
+import { RootReducer } from '../../store'
 
 const Header = () => {
   const dispatch = useDispatch()
-  const { items } = useSelector((state: RooteReducer) => state.cart)
+  const { items } = useSelector((state: RootReducer) => state.cart)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const openCart = () => {

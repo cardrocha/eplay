@@ -3,12 +3,12 @@ import { Game } from '../../pages/Home'
 
 type CartState = {
   items: Game[]
-  IsOpen: boolean
+  isOpen: boolean
 }
 
 const initialState: CartState = {
   items: [],
-  IsOpen: false
+  isOpen: false
 }
 
 const cartSlice = createSlice({
@@ -28,10 +28,10 @@ const cartSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload)
     },
     open: (state) => {
-      state.IsOpen = true
+      state.isOpen = true
     },
     close: (state) => {
-      state.IsOpen = false
+      state.isOpen = false
     }
   }
 })
