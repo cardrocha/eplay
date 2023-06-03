@@ -15,6 +15,7 @@ import * as S from './styles'
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
+
   const form = useFormik({
     initialValues: {
       fullName: '',
@@ -48,6 +49,7 @@ const Checkout = () => {
       confirmDeliveryEmail: Yup.string()
         .oneOf([Yup.ref('deliveryEmail')], 'Os e-mails são diferentes')
         .required('O campo é obrigatório'),
+
       cardOwner: Yup.string().when((values, schema) =>
         payWithCard ? schema.required('O campo é obrigatório') : schema
       ),
@@ -125,13 +127,11 @@ const Checkout = () => {
           <>
             <p>
               É com satisfação que informamos que recebemos seu pedido com
-              sucesso!
-              <br />
-              Abaixo estão os detalhes da sua compra:
-              <br />
+              sucesso! <br />
+              Abaixo estão os detalhes da sua compra: <br />
               Número do pedido: {data.orderId} <br />
               Forma de pagamento:{' '}
-              {payWithCard ? 'cartão de crédito' : 'Boleto bancário'}
+              {payWithCard ? 'Cartão de crédito' : 'Boleto Bancário'}
             </p>
             <p className="margin-top">
               Caso tenha optado pelo pagamento via boleto bancário, lembre-se de
@@ -149,7 +149,7 @@ const Checkout = () => {
               Pedimos que verifique sua caixa de entrada e a pasta de spam para
               garantir que receba nossa comunicação. Caso tenha alguma dúvida ou
               necessite de mais informações, por favor, entre em contato conosco
-              através dos nossos canais de atendimento ao cliente.
+              através dos nossos canais de atendimento ao cliente
             </p>
             <p className="margin-top">
               Agradecemos por escolher a EPLAY e esperamos que desfrute do seu
@@ -163,7 +163,7 @@ const Checkout = () => {
             <>
               <S.Row>
                 <S.InputGroup>
-                  <label htmlFor="fullName">Nome Completo</label>
+                  <label htmlFor="fullName">Nome completo</label>
                   <input
                     id="fullName"
                     type="text"
@@ -177,7 +177,7 @@ const Checkout = () => {
                   </small>
                 </S.InputGroup>
                 <S.InputGroup>
-                  <label htmlFor="eamil">E-mail</label>
+                  <label htmlFor="email">E-mail</label>
                   <input
                     id="email"
                     type="email"
@@ -208,8 +208,8 @@ const Checkout = () => {
                 <S.InputGroup>
                   <label htmlFor="deliveryEmail">E-mail</label>
                   <input
-                    id="deliveryEmail"
                     type="email"
+                    id="deliveryEmail"
                     name="deliveryEmail"
                     value={form.values.deliveryEmail}
                     onChange={form.handleChange}
@@ -227,8 +227,8 @@ const Checkout = () => {
                     Confirme o e-mail
                   </label>
                   <input
-                    id="confirmDeliveryEmail"
                     type="email"
+                    id="confirmDeliveryEmail"
                     name="confirmDeliveryEmail"
                     value={form.values.confirmDeliveryEmail}
                     onChange={form.handleChange}
@@ -244,7 +244,7 @@ const Checkout = () => {
               </S.Row>
             </>
           </Card>
-          <Card title="Pagameno">
+          <Card title="Pagamento">
             <>
               <S.TabButton
                 isActive={!payWithCard}
@@ -269,8 +269,8 @@ const Checkout = () => {
                           Nome do titular do cartão
                         </label>
                         <input
-                          id="cardOwner"
                           type="text"
+                          id="cardOwner"
                           name="cardOwner"
                           value={form.values.cardOwner}
                           onChange={form.handleChange}
@@ -285,8 +285,8 @@ const Checkout = () => {
                           CPF do titular do cartão
                         </label>
                         <input
-                          id="cpfCardOwner"
                           type="text"
+                          id="cpfCardOwner"
                           name="cpfCardOwner"
                           value={form.values.cpfCardOwner}
                           onChange={form.handleChange}
@@ -304,8 +304,8 @@ const Checkout = () => {
                       <S.InputGroup>
                         <label htmlFor="cardDisplayName">Nome no cartão</label>
                         <input
-                          id="cardDisplayName"
                           type="text"
+                          id="cardDisplayName"
                           name="cardDisplayName"
                           value={form.values.cardDisplayName}
                           onChange={form.handleChange}
@@ -321,8 +321,8 @@ const Checkout = () => {
                       <S.InputGroup>
                         <label htmlFor="cardNumber">Número do cartão</label>
                         <input
-                          id="cardNumber"
                           type="text"
+                          id="cardNumber"
                           name="cardNumber"
                           value={form.values.cardNumber}
                           onChange={form.handleChange}
@@ -338,8 +338,8 @@ const Checkout = () => {
                       <S.InputGroup maxWidth="123px">
                         <label htmlFor="expiresMonth">Mês do vencimento</label>
                         <input
-                          id="expiresMonth"
                           type="text"
+                          id="expiresMonth"
                           name="expiresMonth"
                           value={form.values.expiresMonth}
                           onChange={form.handleChange}
@@ -355,8 +355,8 @@ const Checkout = () => {
                       <S.InputGroup maxWidth="123px">
                         <label htmlFor="expiresYear">Ano de vencimento</label>
                         <input
-                          id="expiresYear"
                           type="text"
+                          id="expiresYear"
                           name="expiresYear"
                           value={form.values.expiresYear}
                           onChange={form.handleChange}
@@ -372,8 +372,8 @@ const Checkout = () => {
                       <S.InputGroup maxWidth="48px">
                         <label htmlFor="cardCode">CVV</label>
                         <input
-                          id="cardCode"
                           type="text"
+                          id="cardCode"
                           name="cardCode"
                           value={form.values.cardCode}
                           onChange={form.handleChange}
@@ -420,7 +420,11 @@ const Checkout = () => {
               </div>
             </>
           </Card>
-          <Button type="button" title="Clique aqui para finalizar a compra">
+          <Button
+            type="button"
+            onClick={form.handleSubmit}
+            title="Clique aqui para finalizar a compra"
+          >
             Finalizar compra
           </Button>
         </form>
