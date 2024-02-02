@@ -20,6 +20,8 @@ EPLAY é um projeto que simula uma plataforma de e-commerce de games digitais, p
 - **React Query**: Utilizado para realizar requisições e armazenar em cache os dados da API.
 - **Styled-Components**: Biblioteca para estilização dos componentes.
 - **TypeScript**: Adiciona tipagem estática ao JavaScript, aumentando a robustez e a manutenibilidade do código.
+- **Formik**: adiciona tipagem estática ao JavaScript, aumentando a robustez e a manutenibilidade do código.
+- **Yup**: uma biblioteca que permite validar os dados dos formulários.
 
 ## Como Executar
 
